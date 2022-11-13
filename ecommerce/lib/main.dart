@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
+import 'features/splash/presentation/splash_view.dart';
+
 void main() {
   runApp(FruitsMarket());
 }
@@ -10,6 +12,9 @@ class FruitsMarket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp();
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SplashView(),
+    );
   }
 }
