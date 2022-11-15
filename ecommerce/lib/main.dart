@@ -1,10 +1,12 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-
+import 'package:device_preview/device_preview.dart';
 import 'features/splash/presentation/splash_view.dart';
 
 void main() {
-  runApp(FruitsMarket());
+  runApp(DevicePreview(
+      enabled: !kReleaseMode, builder: (context) => const FruitsMarket()));
 }
 
 class FruitsMarket extends StatelessWidget {
@@ -13,8 +15,11 @@ class FruitsMarket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      home: SplashView(),
+      home: const SplashView(),
     );
   }
 }
