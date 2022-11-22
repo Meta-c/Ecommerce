@@ -3,6 +3,9 @@ import 'package:ecommerce/features/on%20Boarding/presentation/widgets/custom_ind
 import 'package:ecommerce/features/on%20Boarding/presentation/widgets/custom_page_view.dart';
 import 'package:ecommerce/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../on_boarding_controller.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
   const OnBoardingViewBody({super.key});
@@ -35,29 +38,29 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             left: 0,
             right: 0,
             bottom: SizeConfig.defaultSize! * 22,
-            child: CustomDotIndicator(
-                dotIndex:
-                    pageController!.hasClients ? pageController?.page : 0)),
-        Visibility(
-          visible: pageController!.hasClients && pageController?.page == 2
-              ? false
-              : true,
-          child: Positioned(
-            top: SizeConfig.defaultSize! * 10,
-            right: 32,
-            child: InkWell(
-              onTap: () {
-                pageController?.jumpToPage(2);
-              },
-              child: const Text(
-                'Skip',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins',
-                  fontSize: 14,
-                  color: Color(0xff898989),
+            child: GetBuilder<OnBoardingController>(builder: (controller) {
+              return CustomDotIndicator(dotIndex: controller.index.toDouble());
+            })),
+        GetBuilder<OnBoardingController>(
+          builder: (controller) => Visibility(
+            visible: controller.index == 2 ? false : true,
+            child: Positioned(
+              top: SizeConfig.defaultSize! * 10,
+              right: 32,
+              child: InkWell(
+                onTap: () {
+                  pageController?.jumpToPage(2);
+                },
+                child: const Text(
+                  'Skip',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    fontSize: 14,
+                    color: Color(0xff898989),
+                  ),
+                  textAlign: TextAlign.left,
                 ),
-                textAlign: TextAlign.left,
               ),
             ),
           ),

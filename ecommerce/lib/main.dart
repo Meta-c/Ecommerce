@@ -1,10 +1,12 @@
+import 'package:ecommerce/core/dependecies.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import 'package:device_preview/device_preview.dart';
 import 'features/splash/presentation/splash_view.dart';
 
 void main() {
+  setupDependecies();
   runApp(DevicePreview(
       enabled: !kReleaseMode, builder: (context) => const FruitsMarket()));
 }
@@ -15,6 +17,7 @@ class FruitsMarket extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      navigatorKey: Get.key,
       theme: ThemeData(fontFamily: 'Poppins'),
       useInheritedMediaQuery: true,
       locale: DevicePreview.locale(context),
