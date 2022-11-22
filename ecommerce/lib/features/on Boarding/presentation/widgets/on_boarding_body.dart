@@ -37,7 +37,8 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
         Positioned(
             left: 0,
             right: 0,
-            bottom: SizeConfig.defaultSize! * 22,
+            bottom:
+                SizeConfig.screenHeight! - (SizeConfig.screenHeight! * 0.85),
             child: GetBuilder<OnBoardingController>(builder: (controller) {
               return CustomDotIndicator(dotIndex: controller.index.toDouble());
             })),
@@ -45,7 +46,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           builder: (controller) => Visibility(
             visible: controller.index == 2 ? false : true,
             child: Positioned(
-              top: SizeConfig.defaultSize! * 10,
+              top: SizeConfig.defaultSize! * 5,
               right: 32,
               child: InkWell(
                 onTap: () {
@@ -66,7 +67,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           ),
         ),
         Positioned(
-            bottom: SizeConfig.defaultSize! * 10,
+            bottom: SizeConfig.defaultSize! * 5,
             left: SizeConfig.defaultSize! * 10,
             right: SizeConfig.defaultSize! * 10,
             child: CustomGeneralButton(
