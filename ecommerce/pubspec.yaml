@@ -31,6 +31,7 @@ environment:
 dependencies:
   cupertino_icons: ^1.0.2
   device_preview: ^1.1.0
+  dots_indicator: ^2.1.0
   flutter:
     sdk: flutter
   get: ^4.6.5
